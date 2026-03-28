@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Param Clinic — Dr. Meet Kaso Dariya | Homoeopathic Care</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --green-deep: #145a32;
+      --green-mid: #1e8449;
+      --green-light: #27ae60;
+      --green-pale: #e8f8f0;
+      --cream: #faf9f6;
+      --gold: #c9a84c;
+      --text-dark: #1a2e22;
+      --text-body: #4a5d52;
+      --text-light: #7a8f82;
+      --white: #ffffff;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════ TOP BAR ═══════════════ */
+    .top-bar {
+      background: var(--green-deep);
+      color: rgba(255,255,255,0.85);
+      font-size: 13px;
+      padding: 8px 0;
+    }
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .top-bar a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .top-bar a:hover { color: var(--gold); }
+    .top-bar i { margin-right: 6px; color: var(--gold); }
+    .top-info { display: flex; gap: 24px; flex-wrap: wrap; }
+
+    /* ═══════════════ HEADER / NAV ═══════════════ */
+    .header {
+      background: var(--white);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 48px; height: 48px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      border: 2px solid var(--green-light);
+    }
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--green-deep);
+      line-height: 1.2;
+    }
+    .logo-text span {
+      font-size: 11px;
+      color: var(--text-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    nav { display: flex; align-items: center; gap: 6px; }
+    nav a {
+      text-decoration: none;
+      color: var(--text-body);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    nav a:hover, nav a.active {
+      background: var(--green-pale);
+      color: var(--green-deep);
+    }
+    .btn-appointment {
+      background: var(--green-mid) !important;
+      color: var(--white) !important;
+      font-weight: 600 !important;
+      padding: 10px 22px !important;
+      border-radius: 8px !important;
+    }
+    .btn-appointment:hover { background: var(--green-deep) !important; }
+
+    .hamburger {
+      display: none;
+      background: none; border: none;
+      font-size: 24px; color: var(--green-deep);
+      cursor: pointer;
+    }
+
+    /* ═══════════════ SLIDER ═══════════════ */
+    .slider {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      display: flex;
+      align-items: center;
+    }
+    .slide.active { opacity: 1; }
+
+    .slide-1 {
+      background: linear-gradient(135deg, #145a32 0%, #1e8449 40%, #27ae60 100%);
+    }
+    .slide-2 {
+      background: linear-gradient(135deg, #0e4d40 0%, #148f77 40%, #1abc9c 100%);
+    }
+    .slide-3 {
+      background: linear-gradient(135deg, #1a3c5e 0%, #2471a3 40%, #3498db 100%);
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding-left: 60px;
+      color: var(--white);
+    }
+    .slide-label {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .slide-label::before {
+      content: '';
+      width: 36px; height: 2px;
+      background: var(--gold);
+    }
+    .slide-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .slide-content p {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 28px;
+      max-width: 480px;
+    }
+
+    .slide-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--gold);
+      color: var(--green-deep);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      transition: all 0.3s;
+      letter-spacing: 0.5px;
+    }
+    .slide-btn:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .slide-decor {
+      position: absolute;
+      right: 60px;
+      bottom: 40px;
+      font-size: 180px;
+      opacity: 0.08;
+      z-index: 1;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    .dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    .dot.active {
+      background: var(--gold);
+      border-color: var(--white);
+      transform: scale(1.2);
+    }
+
+    /* ═══════════════ CONTAINER ═══════════════ */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ═══════════════ WELCOME SECTION ═══════════════ */
+    .welcome {
+      padding: 80px 0;
+    }
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .welcome-img {
+      background: linear-gradient(135deg, var(--green-deep), var(--green-light));
+      border-radius: 20px;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-img::before {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      top: -40px; right: -40px;
+    }
+    .welcome-img-icon {
+      font-size: 120px;
+      opacity: 0.25;
+      color: #fff;
+    }
+    .welcome-badge {
+      position: absolute;
+      bottom: 24px; left: 24px;
+      background: var(--white);
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .welcome-badge i {
+      font-size: 28px;
+      color: var(--green-mid);
+    }
+    .welcome-badge div strong {
+      display: block;
+      font-size: 14px;
+      color: var(--green-deep);
+    }
+    .welcome-badge div span {
+      font-size: 12px;
+      color: var(--text-light);
+    }
+
+    .section-label {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      width: 30px; height: 2px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 34px);
+      font-weight: 700;
+      color: var(--green-deep);
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+    .welcome-text p {
+      color: var(--text-body);
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    .doctor-card {
+      background: var(--green-pale);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .doctor-avatar {
+      width: 60px; height: 60px;
+      background: var(--green-mid);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 24px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    .doctor-info strong {
+      display: block;
+      font-size: 16px;
+      color: var(--green-deep);
+    }
+    .doctor-info span {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    /* ═══════════════ SERVICES ═══════════════ */
+    .services {
+      padding: 80px 0;
+      background: var(--white);
+    }
+    .services .section-label,
+    .services .section-title {
+      text-align: center;
+    }
+    .services .section-label { justify-content: center; }
+    .services .section-title { margin-bottom: 40px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--cream);
+      border-radius: 14px;
+      padding: 32px 22px;
+      text-align: center;
+      transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      border-color: var(--green-light);
+    }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: var(--green-pale);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+      color: var(--green-mid);
+      transition: all 0.3s;
+    }
+    .service-card:hover .service-icon {
+      background: var(--green-mid);
+      color: var(--white);
+    }
+    .service-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green-deep);
+      margin-bottom: 6px;
+    }
+    .service-card p {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    /* ═══════════════ WHY CHOOSE ═══════════════ */
+    .why-choose {
+      padding: 80px 0;
+    }
+    .why-choose .section-label,
+    .why-choose .section-title {
+      text-align: center;
+    }
+    .why-choose .section-label { justify-content: center; }
+    .why-choose .section-title { margin-bottom: 40px; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .feature-num {
+      width: 40px; height: 40px;
+      min-width: 40px;
+      background: var(--green-mid);
+      color: #fff;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .feature-card h4 {
+      font-size: 15px;
+      color: var(--green-deep);
+      margin-bottom: 4px;
+    }
+    .feature-card p {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    /* ═══════════════ TIMINGS ═══════════════ */
+    .timings {
+      padding: 80px 0;
+      background: var(--white);
+    }
+    .timings-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .timing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .timing-table tr {
+      border-bottom: 1px solid var(--green-pale);
+    }
+    .timing-table td {
+      padding: 14px 0;
+      font-size: 15px;
+    }
+    .timing-table td:first-child {
+      font-weight: 600;
+      color: var(--green-deep);
+    }
+    .timing-table td:last-child {
+      text-align: right;
+      color: var(--text-body);
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+      border-radius: 16px;
+      padding: 36px;
+      color: var(--white);
+      text-align: center;
+    }
+    .cta-card i {
+      font-size: 40px;
+      opacity: 0.3;
+      margin-bottom: 16px;
+    }
+    .cta-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .cta-card p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+    .cta-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--green-deep);
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+    .cta-phone:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ═══════════════ FOOTER ═══════════════ */
+    .footer {
+      background: var(--green-deep);
+      color: rgba(255,255,255,0.8);
+      padding: 56px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+    .footer h4 {
+      color: var(--white);
+      font-size: 16px;
+      margin-bottom: 18px;
+      font-family: 'Playfair Display', serif;
+    }
+    .footer p, .footer li {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .footer-logo-icon {
+      width: 42px; height: 42px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .footer-logo h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--white);
+    }
+    .footer ul {
+      list-style: none;
+    }
+    .footer ul li {
+      padding: 4px 0;
+    }
+    .footer ul li a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer ul li a:hover { color: var(--gold); }
+    .footer ul li i {
+      width: 20px;
+      color: var(--gold);
+      margin-right: 8px;
+    }
+    .footer-contact li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+    .social-links a {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .social-links a:hover {
+      background: var(--gold);
+      color: var(--green-deep);
+    }
+
+    /* ═══════════════ RESPONSIVE ═══════════════ */
+    @media (max-width: 768px) {
+      .top-info { display: none; }
+      nav { display: none; }
+      .hamburger { display: block; }
+      nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--white);
+        padding: 16px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      }
+      .slider { height: 420px; }
+      .slide-content { padding-left: 28px; padding-right: 28px; }
+      .slide-decor { display: none; }
+      .welcome-grid { grid-template-columns: 1fr; gap: 32px; }
+      .welcome-img { height: 260px; }
+      .timings-wrapper { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ TOP BAR ══ -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-info">
+        <a href="tel:+918511912750"><i class="fas fa-phone-alt"></i> +91 85119 12750</a>
+        <span><i class="fas fa-map-marker-alt"></i> Surat, Gujarat, India</span>
+      </div>
+      <span><i class="fas fa-clock"></i> Mon–Sat: 9:00 AM – 9:00 PM</span>
+    </div>
+  </div>
+
+  <!-- ══ HEADER ══ -->
+  <header class="header">
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-icon">🩺</div>
+        <div class="logo-text">
+          <h1>Param Clinic</h1>
+          <span>Homoeopathic Care</span>
+        </div>
+      </a>
+      <button class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#timings">Timings</a>
+        <a href="tel:+918511912750" class="btn-appointment">Book Appointment</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ══ SLIDER ══ -->
+  <section class="slider" id="home">
+    <div class="slide slide-1 active">
+      <div class="slide-content">
+        <div class="slide-label">Welcome to Param Clinic</div>
+        <h2>Holistic Homoeopathic Healing for Your Family</h2>
+        <p>Experience natural, safe, and effective healthcare with personalized treatment plans that address the root cause of your health concerns.</p>
+        <a href="tel:+918511912750" class="slide-btn"><i class="fas fa-phone-alt"></i> &nbsp;Call Now: 85119 12750</a>
+      </div>
+      <div class="slide-decor"><i class="fas fa-heartbeat"></i></div>
+    </div>
+
+    <div class="slide slide-2">
+      <div class="slide-content">
+        <div class="slide-label">Expert Homoeopathic Doctor</div>
+        <h2>Dr. Meet Kaso Dariya <br/>B.H.M.S.</h2>
+        <p>A qualified and compassionate homoeopathic physician dedicated to providing gentle, side-effect-free treatment for patients of all ages.</p>
+        <a href="#about" class="slide-btn">Know More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="slide-decor"><i class="fas fa-user-md"></i></div>
+    </div>
+
+    <div class="slide slide-3">
+      <div class="slide-content">
+        <div class="slide-label">Natural Treatment</div>
+        <h2>No Side Effects. Pure Natural Healing.</h2>
+        <p>Homoeopathy treats the individual, not just the disease. Safe remedies suitable for children, adults, and the elderly alike.</p>
+        <a href="#services" class="slide-btn">Our Services <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="slide-decor"><i class="fas fa-leaf"></i></div>
+    </div>
+
+    <div class="slider-dots">
+      <div class="dot active" onclick="goToSlide(0)"></div>
+      <div class="dot" onclick="goToSlide(1)"></div>
+      <div class="dot" onclick="goToSlide(2)"></div>
+    </div>
+  </section>
+
+  <!-- ══ WELCOME / ABOUT ══ -->
+  <section class="welcome" id="about">
+    <div class="container">
+      <div class="welcome-grid">
+        <div class="welcome-img">
+          <div class="welcome-img-icon"><i class="fas fa-clinic-medical"></i></div>
+          <div class="welcome-badge">
+            <i class="fas fa-award"></i>
+            <div>
+              <strong>B.H.M.S. Certified</strong>
+              <span>Qualified Homoeopath</span>
+            </div>
+          </div>
+        </div>
+        <div class="welcome-text">
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">Welcome to Param Clinic</h2>
+          <p>
+            Param Clinic is a trusted homoeopathic healthcare centre in Surat, Gujarat, offering personalized treatment that focuses on healing the whole person — mind, body, and spirit.
+          </p>
+          <p>
+            Our approach is rooted in classical homoeopathy, using carefully selected natural remedies that stimulate the body's own healing abilities without any harmful side effects. We treat a wide range of acute and chronic conditions for all age groups.
+          </p>
+          <p>
+            Whether you're dealing with allergies, skin conditions, digestive issues, joint pain, or stress-related problems, we provide compassionate care tailored to your unique needs.
+          </p>
+          <div class="doctor-card">
+            <div class="doctor-avatar">MD</div>
+            <div class="doctor-info">
+              <strong>Dr. Meet Kaso Dariya</strong>
+              <span>B.H.M.S. (Bachelor of Homoeopathic Medicine & Surgery)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICES ══ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-stethoscope"></i></div>
+          <h3>General Consultation</h3>
+          <p>Complete case taking & personalized treatment</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-baby"></i></div>
+          <h3>Paediatric Care</h3>
+          <p>Safe & gentle remedies for children</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-allergies"></i></div>
+          <h3>Skin & Allergy</h3>
+          <p>Eczema, psoriasis, acne & allergies</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-bone"></i></div>
+          <h3>Joint & Muscle Pain</h3>
+          <p>Arthritis, sciatica, back & neck pain</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-lungs"></i></div>
+          <h3>Respiratory Issues</h3>
+          <p>Asthma, sinusitis, chronic cough</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-brain"></i></div>
+          <h3>Stress & Anxiety</h3>
+          <p>Mental health, insomnia & migraine</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-stomach"></i></div>
+          <h3>Digestive Health</h3>
+          <p>Acidity, IBS, liver & gastric disorders</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-female"></i></div>
+          <h3>Women's Health</h3>
+          <p>PCOD, menstrual issues & hormonal care</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WHY CHOOSE US ══ -->
+  <section class="why-choose">
+    <div class="container">
+      <div class="section-label">Why Param Clinic</div>
+      <h2 class="section-title">Why Choose Us?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-num">01</div>
+          <div>
+            <h4>Qualified Doctor</h4>
+            <p>B.H.M.S. certified homoeopathic physician</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">02</div>
+          <div>
+            <h4>No Side Effects</h4>
+            <p>100% natural & safe homoeopathic remedies</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">03</div>
+          <div>
+            <h4>Root Cause Treatment</h4>
+            <p>We treat the cause, not just symptoms</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">04</div>
+          <div>
+            <h4>All Age Groups</h4>
+            <p>Children, adults & elderly — all welcome</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TIMINGS ══ -->
+  <section class="timings" id="timings">
+    <div class="container">
+      <div class="timings-wrapper">
+        <div>
+          <div class="section-label">Visit Us</div>
+          <h2 class="section-title">Clinic Timings</h2>
+          <table class="timing-table">
+            <tr><td>Monday</td><td>9:00 AM – 1:00 PM &amp; 5:00 PM – 9:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>9:00 AM – 1:00 PM &amp; 5:00 PM – 9:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>9:00 AM – 1:00 PM &amp; 5:00 PM – 9:00 PM</td></tr>
+            <tr><td>Thursday</td><td>9:00 AM – 1:00 PM &amp; 5:00 PM – 9:00 PM</td></tr>
+            <tr><td>Friday</td><td>9:00 AM – 1:00 PM &amp; 5:00 PM – 9:00 PM</td></tr>
+            <tr><td>Saturday</td><td>9:00 AM – 1:00 PM &amp; 5:00 PM – 9:00 PM</td></tr>
+            <tr><td>Sunday</td><td>By Appointment Only</td></tr>
+          </table>
+        </div>
+        <div class="cta-card">
+          <i class="fas fa-phone-volume"></i>
+          <h3>Book an Appointment</h3>
+          <p>Call us today to schedule your consultation with Dr. Meet Kaso Dariya</p>
+          <a href="tel:+918511912750" class="cta-phone">
+            <i class="fas fa-phone-alt"></i> 85119 12750
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <div class="footer-logo-icon">🩺</div>
+            <h3>Param Clinic</h3>
+          </div>
+          <p>A trusted homoeopathic clinic providing natural, safe, and effective healthcare. We believe in treating the whole person for lasting health and wellness.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+            <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="#timings"><i class="fas fa-chevron-right"></i> Timings</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-phone-alt"></i> +91 85119 12750</li>
+            <li><i class="fas fa-map-marker-alt"></i> Surat, Gujarat, India</li>
+            <li><i class="fas fa-clock"></i> Mon–Sat: 9 AM – 9 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Param Clinic — Dr. Meet Kaso Dariya, B.H.M.S. All Rights Reserved.</span>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ SLIDER JS ══ -->
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = n;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function nextSlide() {
+      goToSlide((current + 1) % slides.length);
+    }
+
+    setInterval(nextSlide, 4500);
+  </script>
+
+</body>
+</html>
